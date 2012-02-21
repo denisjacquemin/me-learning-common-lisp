@@ -1,0 +1,32 @@
+
+CL-USER 1 > "Hello World"
+"Hello World"
+
+CL-USER 2 > (format t "hello, world")
+hello, world
+NIL
+
+CL-USER 3 > (defun hello-world () (format t "hello, world"))
+HELLO-WORLD
+
+CL-USER 4 > (defun hello() (format t "hello"))
+HELLO
+
+CL-USER 5 > HEllO
+
+Error: The variable HELLO is unbound.
+  1 (continue) Try evaluating HELLO again.
+  2 Specify a value to use this time instead of evaluating HELLO.
+  3 Specify a value to set HELLO to.
+  4 Return the result of calling (HELLO) instead.
+  5 (abort) Return to level 0.
+  6 Return to top loop level 0.
+
+Type :b for backtrace or :c <option number> to proceed.
+Type :bug-form "<subject>" for a bug report template or :? for other options.
+
+CL-USER 6 : 1 > (hello-world)
+hello, world
+NIL
+
+CL-USER 7 : 1 >
