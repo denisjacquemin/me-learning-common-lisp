@@ -1,0 +1,87 @@
+CL-USER 1 > (getf (list a: 1 b: 2 c: 3) a:)
+
+Error: Reader cannot find package A.
+  1 (continue) Create the A package.
+  2 Use another package instead of A.
+  3 Try finding package A again.
+  4 (abort) Return to level 0.
+  5 Return to top loop level 0.
+
+Type :b for backtrace or :c <option number> to proceed.
+Type :bug-form "<subject>" for a bug report template or :? for other options.
+
+CL-USER 1 : 1 > (getf (list :a 1 :b 2 :c 3) :b)
+2
+
+CL-USER 2 : 1 > (defun make-cd (title artist rating ripped))
+MAKE-CD
+
+CL-USER 3 : 1 > (defun make-cd (title artist rating ripped) (list :title title :artist artist :rating rating :ripped ripped))
+MAKE-CD
+
+CL-USER 4 : 1 > (make-cd ("Melon Collie" "Smashing Pumpkins" 9 t))
+
+Error: Illegal argument in functor position: "Melon Collie" in ("Melon Collie" "Smashing Pumpkins" 9 T).
+  1 (continue) Evaluate "Melon Collie" and ignore the rest.
+  2 (abort) Return to level 1.
+  3 Return to debug level 1.
+  4 Return to level 0.
+  5 Return to top loop level 0.
+
+Type :b for backtrace or :c <option number> to proceed.
+Type :bug-form "<subject>" for a bug report template or :? for other options.
+
+CL-USER 5 : 2 > (make-cd "Mellon Collie" "Smashing Pumpkins" 9 t)
+(:TITLE "Mellon Collie" :ARTIST "Smashing Pumpkins" :RATING 9 :RIPPED T)
+
+CL-USER 6 : 2 > (defvar *db* nil)
+*DB*
+
+CL-USER 7 : 2 > (defun add-record (cd) (push cd *db*))
+ADD-RECORD
+
+CL-USER 8 : 2 > (add-record (make-cd "Nevermind" "Nirvana" 8 t)) 
+
+
+
+
+quit
+
+Error: The variable QUIT is unbound.
+   1 (continue) Try evaluating QUIT again.
+   2 Return the value of :QUIT instead.
+   3 Specify a value to use this time instead of evaluating QUIT.
+   4 Specify a value to set QUIT to.
+   5 Return the result of calling (QUIT) instead.
+   6 (abort) Return to level 2.
+   7 Return to debug level 2.
+   8 Evaluate "Melon Collie" and ignore the rest.
+   9 Return to level 1.
+  10 Return to debug level 1.
+  11 Return to level 0.
+  12 Return to top loop level 0.
+
+Type :b for backtrace or :c <option number> to proceed.
+Type :bug-form "<subject>" for a bug report template or :? for other options.
+
+CL-USER 9 : 3 > (add-record (make-cd "Nevermind" "Nirvana" 9 t))
+((:TITLE "Nevermind" :ARTIST "Nirvana" :RATING 9 :RIPPED T))
+
+CL-USER 10 : 3 > (add-record (make-cd "MEllon Collie" "Smashing Pumpkins" 8 t))
+((:TITLE "MEllon Collie" :ARTIST "Smashing Pumpkins" :RATING 8 :RIPPED T) (:TITLE "Nevermind" :ARTIST "Nirvana" :RATING 9 :RIPPED T))
+
+CL-USER 11 : 3 > *db*
+((:TITLE "MEllon Collie" :ARTIST "Smashing Pumpkins" :RATING 8 :RIPPED T) (:TITLE "Nevermind" :ARTIST "Nirvana" :RATING 9 :RIPPED T))
+
+CL-USER 12 : 3 > (dumb-db *db*)
+TITLE:    MEllon Collie
+ARTIST:   Smashing Pumpkins
+RATING:   8
+RIPPED:   T
+
+TITLE:    Nevermind
+ARTIST:   Nirvana
+RATING:   9
+RIPPED:   T
+
+NIL
